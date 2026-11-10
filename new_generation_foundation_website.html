@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The New Generation Foundation — creating opportunities, building confidence and supporting positive change.">
+  <meta name="theme-color" content="#102b46">
+  <title>The New Generation Foundation</title>
+  <style>
+    :root {
+      --navy:#102b46; --blue:#176b87; --teal:#22a6a1; --gold:#f2b84b;
+      --ink:#182b3a; --muted:#607080; --paper:#f6f8fa; --white:#fff;
+      --line:#e3e9ee; --shadow:0 18px 50px rgba(16,43,70,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--white);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,calc(100% - 40px));margin:auto}
+    .topbar{background:var(--navy);color:#dbe7ef;font-size:.85rem;padding:8px 0}
+    .topbar .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy);letter-spacing:-.03em;line-height:1.1}
+    .logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,var(--teal),var(--blue));display:grid;place-items:center;color:white;font-weight:900;font-size:1.1rem;box-shadow:0 8px 20px #176b8733}
+    .brand small{display:block;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:5px}
+    .navlinks{display:flex;align-items:center;gap:27px;font-size:.93rem;font-weight:650;color:#435565}
+    .navlinks a:hover,.navlinks a.active{color:var(--teal)}
+    .menu-btn{display:none;border:0;background:var(--paper);border-radius:10px;padding:10px 12px;font-size:1.2rem;color:var(--navy)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 20px;border-radius:999px;font-weight:750;border:1px solid transparent;transition:.2s;cursor:pointer}
+    .btn-primary{background:var(--teal);color:white;box-shadow:0 9px 22px #22a6a133}
+    .btn-primary:hover{background:#168b87;transform:translateY(-2px)}
+    .btn-light{background:white;color:var(--navy);border-color:#dce5eb}
+    .btn-light:hover{border-color:var(--teal);transform:translateY(-2px)}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#102b46 0%,#164b68 58%,#167d83 100%);color:white;padding:100px 0 94px}
+    .hero:before,.hero:after{content:"";position:absolute;border:1px solid #ffffff18;border-radius:50%;pointer-events:none}
+    .hero:before{width:520px;height:520px;right:-130px;top:-260px}
+    .hero:after{width:370px;height:370px;right:0;bottom:-260px}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:55px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.15em;font-size:.75rem;font-weight:800;color:var(--gold)}
+    .eyebrow:before{content:"";width:27px;height:2px;background:currentColor}
+    h1{font-size:clamp(2.65rem,6vw,4.8rem);line-height:1.04;letter-spacing:-.055em;margin:19px 0 22px;max-width:760px}
+    .hero p{font-size:1.12rem;color:#e1edf3;max-width:600px;margin:0 0 30px}
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap}
+    .hero .btn-light{background:#ffffff12;border-color:#ffffff55;color:white}
+    .hero-card{background:#ffffff12;border:1px solid #ffffff30;border-radius:26px;padding:28px;backdrop-filter:blur(8px);box-shadow:0 20px 60px #061b2a33}
+    .hero-card .symbol{font-size:2.6rem;margin-bottom:12px}
+    .hero-card h2{font-size:1.35rem;margin:0 0 8px}
+    .hero-card p{font-size:.96rem;margin:0;color:#d9e8ef}
+    .hero-card .rule{height:1px;background:#ffffff35;margin:22px 0}
+    .hero-card strong{display:block;color:var(--gold);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+    section{padding:82px 0}
+    .section-head{max-width:690px;margin-bottom:38px}
+    .kicker{font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);font-weight:850}
+    h2.section-title{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.045em;line-height:1.12;color:var(--navy);margin:10px 0 14px}
+    .section-head p,.muted{color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .about-visual{min-height:340px;border-radius:25px;background:linear-gradient(145deg,#d8f0ed,#eaf0f7);padding:28px;display:flex;align-items:end;position:relative;overflow:hidden}
+    .about-visual:before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;background:#22a6a133;top:-75px;right:-45px}
+    .about-visual:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#f2b84b66;bottom:-80px;left:-45px}
+    .visual-note{position:relative;z-index:1;background:white;padding:22px;border-radius:18px;max-width:280px;box-shadow:var(--shadow)}
+    .visual-note b{display:block;color:var(--navy);font-size:1.15rem;margin-bottom:5px}
+    .visual-note span{color:var(--muted);font-size:.9rem}
+    .about-copy p{color:var(--muted)}
+    .values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+    .value{padding:17px;border:1px solid var(--line);border-radius:15px}
+    .value b{display:block;color:var(--navy);margin-bottom:4px}
+    .value span{font-size:.88rem;color:var(--muted)}
+    .services{background:var(--paper)}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service-card{background:white;border:1px solid var(--line);border-radius:19px;padding:25px;transition:.2s}
+    .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#b8dfdc}
+    .service-icon{width:48px;height:48px;border-radius:14px;background:#e5f5f3;display:grid;place-items:center;font-size:1.4rem;margin-bottom:18px}
+    .service-card h3{color:var(--navy);margin:0 0 8px;font-size:1.13rem}
+    .service-card p{margin:0;color:var(--muted);font-size:.94rem}
+    .cta{padding:0 0 82px;background:var(--paper)}
+    .cta-inner{background:linear-gradient(110deg,var(--navy),var(--blue));border-radius:24px;padding:38px 42px;color:white;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .cta-inner h2{font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.15;margin:0 0 8px;letter-spacing:-.04em}
+    .cta-inner p{margin:0;color:#d7e7ef}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}
+    .contact-info{background:var(--navy);color:white;border-radius:22px;padding:29px}
+    .contact-info h3{font-size:1.4rem;margin:0 0 10px}
+    .contact-info p{color:#d5e3eb}
+    .contact-item{padding:14px 0;border-top:1px solid #ffffff25;color:#e3edf2;font-size:.94rem}
+    form{display:grid;gap:14px}
+    label{font-weight:700;color:var(--navy);font-size:.9rem}
+    input,textarea{width:100%;padding:13px 14px;border:1px solid #dce4e9;border-radius:11px;font:inherit;margin-top:6px;outline:none;background:#fff}
+    input:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #22a6a11c}
+    textarea{min-height:125px;resize:vertical}
+    footer{background:#0b2034;color:#cbd9e2;padding:30px 0}
+    .footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+    footer strong{color:white}
+    .footer-links{display:flex;gap:18px;font-size:.9rem}
+    .footer-links a:hover{color:var(--gold)}
+    .notice{font-size:.82rem;color:var(--muted);margin-top:12px}
+    @media(max-width:800px){
+      .navlinks{display:none;position:absolute;left:0;right:0;top:76px;background:white;padding:20px 24px 25px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}
+      .navlinks.open{display:flex}.menu-btn{display:block}.nav-cta{display:none}
+      .hero{padding:75px 0}.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:30px}
+      .hero-card{max-width:500px}.service-grid{grid-template-columns:1fr 1fr}
+      .values{grid-template-columns:1fr}.cta-inner{align-items:flex-start;flex-direction:column;padding:30px}
+    }
+    @media(max-width:520px){.container{width:min(100% - 30px,1120px)}section{padding:62px 0}.service-grid{grid-template-columns:1fr}.hero{padding:64px 0}.topbar .container{font-size:.76rem}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container"><span>Building opportunity. Inspiring tomorrow.</span><span>A foundation for the next generation</span></div></div>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home"><span class="logo">NG</span><span>THE NEW GENERATION<small>FOUNDATION</small></span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a>
+      </div>
+      <a class="btn btn-primary nav-cta" href="#contact">Get in touch <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Hope • Opportunity • Progress</span>
+          <h1>Empowering a new generation to shape tomorrow.</h1>
+          <p>The New Generation Foundation is a platform for positive change. We believe every young person deserves the opportunity to learn, grow and contribute to a brighter future.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#about">Discover our foundation <span>→</span></a><a class="btn btn-light" href="#contact">Contact us</a></div>
+        </div>
+        <aside class="hero-card">
+          <div class="symbol">✦</div>
+          <h2>Every generation deserves a chance to thrive.</h2>
+          <p>Working towards a future where potential is encouraged, ideas are valued and communities can flourish.</p>
+          <div class="rule"></div>
+          <strong>Our guiding belief</strong>
+          <p>Positive change begins when people are given the support and opportunity to make a difference.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-visual"><div class="visual-note"><b>A brighter future starts with opportunity.</b><span>Supporting people, strengthening communities and encouraging positive action.</span></div></div>
+        <div class="about-copy">
+          <span class="kicker">Who we are</span>
+          <h2 class="section-title">About The New Generation Foundation</h2>
+          <p>The New Generation Foundation is presented here as a foundation focused on opportunity, personal development and community progress. Our goal is to encourage people—especially young people—to recognise their potential and take part in building a better future.</p>
+          <p>This website is a starting point. Add your foundation's confirmed history, leadership, location and specific mission before publishing.</p>
+          <div class="values">
+            <div class="value"><b>Empowerment</b><span>Encouraging people to reach their potential.</span></div>
+            <div class="value"><b>Integrity</b><span>Acting with honesty and responsibility.</span></div>
+            <div class="value"><b>Community</b><span>Growing through partnership and service.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head"><span class="kicker">What we focus on</span><h2 class="section-title">Our services and areas of focus</h2><p>These are suggested programme areas. Replace or edit them to reflect the real activities of your foundation.</p></div>
+        <div class="service-grid">
+          <article class="service-card"><div class="service-icon">📚</div><h3>Education & Learning</h3><p>Encouraging access to learning, knowledge and skills that help people prepare for the future.</p></article>
+          <article class="service-card"><div class="service-icon">🌱</div><h3>Youth Development</h3><p>Supporting confidence, leadership, creativity and positive participation among young people.</p></article>
+          <article class="service-card"><div class="service-icon">🤝</div><h3>Community Support</h3><p>Promoting cooperation, volunteerism and initiatives that respond to community needs.</p></article>
+          <article class="service-card"><div class="service-icon">💡</div><h3>Skills & Innovation</h3><p>Inspiring practical skills, problem-solving and fresh ideas for everyday challenges.</p></article>
+          <article class="service-card"><div class="service-icon">🌍</div><h3>Awareness & Advocacy</h3><p>Sharing useful information and encouraging constructive action on important issues.</p></article>
+          <article class="service-card"><div class="service-icon">✨</div><h3>Partnerships</h3><p>Connecting with people and organisations who share a commitment to positive change.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta"><div class="container"><div class="cta-inner"><div><h2>Let's build a brighter future together.</h2><p>Have an idea, want to collaborate, or would like to learn more?</p></div><a class="btn btn-primary" href="#contact">Start a conversation <span>→</span></a></div></div></div>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head"><span class="kicker">Get in touch</span><h2 class="section-title">Contact our foundation</h2><p>We welcome questions, ideas and opportunities to work together.</p></div>
+        <div class="contact-grid">
+          <div class="contact-info"><h3>Let's connect</h3><p>Use the contact details below once they have been confirmed by the foundation.</p><div class="contact-item">✉️ &nbsp; Email: <strong>[Add official email]</strong></div><div class="contact-item">📞 &nbsp; Phone: <strong>[Add phone number]</strong></div><div class="contact-item">📍 &nbsp; Location: <strong>[Add town / district]</strong></div></div>
+          <div>
+            <form id="contactForm">
+              <label>Your name<input name="name" autocomplete="name" placeholder="Enter your name" required></label>
+              <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+              <label>Subject<input name="subject" placeholder="How can we help?" required></label>
+              <label>Message<textarea name="message" placeholder="Write your message..." required></textarea></label>
+              <button class="btn btn-primary" type="submit">Prepare email message ↗</button>
+            </form>
+            <p class="notice" id="formNotice">The form opens your email app to send the message. Add the foundation's official email address in the website code first.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-row"><div><strong>The New Generation Foundation</strong><br><small>Building opportunity. Inspiring tomorrow.</small></div><div class="footer-links"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a></div><small>© <span id="year"></span> The New Generation Foundation</small></div></footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navlinks = document.getElementById('navlinks');
+    menuBtn.addEventListener('click', () => {
+      const open = navlinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+    navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      const recipient = 'REPLACE-WITH-OFFICIAL-EMAIL@example.com';
+      const subject = encodeURIComponent(data.get('subject'));
+      const body = encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`);
+      if (recipient.includes('REPLACE-WITH')) {
+        document.getElementById('formNotice').textContent = 'Please add your foundation’s official email address in the code before using this form.';
+        return;
+      }
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
